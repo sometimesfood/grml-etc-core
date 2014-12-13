@@ -1,3 +1,79 @@
+grml-etc-core (0.9.0) grml-testing; urgency=low
+
+  zshrc: use "ctrl-x ." instead ",." to enable power completion /
+  abbreviation expansion:
+
+  The use of ",." for enabling the power completion /
+  abbreviation expansion / buffer expansion was a bad idea
+  because you'll get either a delay or even missing characters,
+  e.g. when ",." is part of a copy/paste action. So we decided to
+  switch to a safer approach by using "ctrl-x ." instead.
+
+ -- Michael Prokop <mika@grml.org>  Wed, 04 Sep 2013 17:06:45 +0200
+
+grml-etc-core (0.8.0) unstable; urgency=low
+
+  * zshrc: Prompt converted to zsh's prompt theme system:
+
+    This version of the included zsh setup features a prompt theme based
+    on the old statically set prompt, that we shipped. The prompt is very
+    much customisable. Changing colours or removing and adding information
+    used in the prompt is easily possible via zsh's zstyle mechanism. For
+    more details call this:
+
+        prompt -h grml
+
+    However, if you used to discard our old prompt and used an own static
+    prompt, you need to disable the prompt system so your changes stick,
+    because when a prompt theme is active it takes over control of prompt
+    variables, which will undo your changes again. So your customisation
+    now has to look like this:
+
+        prompt off
+        PS1='%~ %# '
+
+    Our prompt is also quite extensible: For example, if you use
+    Virtualenv, and would like integration in our prompt, this is how it
+    can be done (the default way Virtualenv tries to do this is by
+    statically extending $PS1, which doesn't work with zsh themes, as
+    discussed above):
+
+        function virtual_env_prompt () {
+            REPLY=${VIRTUAL_ENV+(${VIRTUAL_ENV:t}) }
+        }
+        grml_theme_add_token \
+            virtual-env -f virtual_env_prompt '%F{magenta}' '%f'
+        zstyle ':prompt:grml:left:setup' items \
+            rc virtual-env change-root user at host path vcs percent
+
+  * zshrc: Keyboard setup changed to terminfo data
+
+    This setup had a mixture of hard-coded escape sequences and a broken
+    terminfo data extraction scheme.
+
+    Starting with this release, escape sequences are extracted from
+    terminfo exclusively (except for a handful of combinations, that are
+    commonly not found in terminfo databases). For this to work properly,
+    the terminal needs to be switched to "keyboard transmit mode" via the
+    `smkx' escape sequence (if a terminal's terminfo entry does not
+    support this key, keyboard transmit-mode is active all the time). To
+    enable this feature when zsh's line editor (zle) is active, this setup
+    now uses the `zle-line-init' and `zle-line-finish' hooks. The former
+    invokes the `smkx' sequence and the latter invokes the `rmkx'
+    sequence.
+
+    If you override these hooks in your setup, make sure you include the
+    following function calls in your own hooks:
+
+        zle-line-init:    zle-smkx
+        zle-line-finish:  zle-rmkx
+
+    Unless your system does not have support for terminfo, the new setup
+    should work a lot more robust across a much larger number of terminals
+    and terminal/terminal-multiplexer combinations.
+
+ -- Frank Terbeck <ft@grml.org>  Mon, 01 Apr 2013 16:53:31 +0200
+
 grml-etc-core (0.3.62) unstable; urgency=low
 
   * Merged /etc/skel/.zshrc into /etc/zsh/zshrc:
