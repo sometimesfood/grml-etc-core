@@ -55,6 +55,15 @@ Deprecated. Use **GRML_DISPLAY_BATTERY** instead.
 A non zero value activates a handler, which is called when a command can not
 be found. The handler is defined by GRML_ZSH_CNF_HANDLER (see below).
 
+: **GRML_COMP_CACHING**
+If set to //yes// (the default), the setup will enable zsh's completion caching
+mechanism, with the caching data being placed into //$GRML_COMP_CACHE_DIR//.
+
+: **GRML_COMP_CACHE_DIR**
+This defines where zsh's completion caching data will be placed, if
+//$GRML_COMP_CACHING// is active. The default is //${ZDOTDIR:-$HOME}/.cache//.
+The setup will ensure the directory exists before attempting to use it.
+
 : **GRML_DISPLAY_BATTERY**
 If set to a value greater than zero, //grmlzshrc// will put the battery status
 into the right hand side interactive prompt. Supported OSes are //GNU/Linux//,
@@ -126,6 +135,51 @@ via the **DIRSTACKFILE** variable and it defaults to **~/.zdirs**. The
 The **DIRSTACKFILE** is loaded each time zsh starts, therefore freshly started
 zshs inherit the dirstack of the zsh that most recently updated
 **DIRSTACKFILE**.
+
+It is possible to apply a filter to the names of directories that will be
+committed to the persistent dirstack file. There are two ways to configure this
+filter: A general function based filter and a pattern based filter. Both are
+setup via styles in the **':grml:chpwd:dirstack'** context.
+
+To use a function based filter set the //filter// style for that context to the
+name of a function to call every time a directory name is to be added to the
+persistent dirstack. If the function's return value signals success (ie. return
+value "0"), the directory name is filtered out and **not** added to the
+persistent stack. Example:
+\
+```
+function my_dirstack_filter() { [[ $1 == /tmp(|/*) ]] }
+zstyle ':grml:chpwd:dirstack' filter my_dirstack_filter
+```
+
+The pattern based filter uses a list of patterns passed to the //exclude//
+style in the aforementioned context. Each pattern is tested and the first that
+matches will keep the directory name from being added to the persistent stack.
+If none of the patterns matches, the name is added. example:
+\
+```
+zstyle ':grml:chpwd:dirstack' exclude "/tmp(|/*)" "$HOME/tmp(|/*)"
+```
+
+The function based filter is more general, the pattern based filter easier to
+set up. If both filter variants are used at the same time, the function based
+filter will be executed //before// the pattern based one.
+
+If you would like to apply your filters while //loading// the persistent
+dirstack file, set the //filter-on-load// boolean style (the default is
+//false//):
+\
+```
+zstyle ':grml:chpwd:dirstack' filter-on-load true
+```
+
+Setting the //filter-on-load// needs to be done in ".zshrc.pre" because the
+style needs to be set when the main setup is executing! The other styles do not
+have this limitation, but the initial filtering will obviously be done using
+the filters that are configured **at** **that** **point**. The rule of thumb
+is: If you want to filter on load, setup everything in ".zshrc.pre" otherwise
+".zshrc.local" works just as well.
+
 
 == DIRECTORY BASED PROFILES ==
 
@@ -402,10 +456,6 @@ already set otherwise.
 : **PAGER**
 Set less(1) as default pager, if not already set to something different.
 
-: **SHELL**
-Set explicitly to /bin/zsh, to prevent certain terminal emulators to
-default to /bin/sh or /bin/bash.
-
 
 == OPTIONS ==
 Apart from zsh's default options, //grmlzshrc// sets some options
@@ -548,9 +598,6 @@ Lists files in current directory, which have been accessed within the
 last N days. N is an integer to be passed as first and only argument.
 If no argument is specified N is set to 1.
 
-: **allulimit()**
-Sets all ulimit values to "unlimited".
-
 : **any()**
 Lists processes matching given pattern.
 
@@ -561,9 +608,9 @@ else start a new screen.  This is especially useful for roadwarriors using GNU
 screen and ssh.
 
 : **bk()**
-Simple backup of a file or directory using cp(1). The target file name is the
-original name plus a time stamp attached. Symlinks and file attributes like mode,
-ownership and timestamps are preserved.
+Simple backup management of a file or directory using standard unix programs.
+The target file name is the original name plus a time stamp attached. Symlinks
+and file attributes like mode, ownership and timestamps are preserved.
 
 : **cdrecord()**
 If the original cdrecord is not installed, issues a warning to the user to
@@ -706,7 +753,7 @@ Example usages:
 ```
 
 : **profile()**
-Runs a command in $SHELL with profiling enabled (See startup variable
+Runs a command in zsh with profiling enabled (See startup variable
 ZSH_PROFILE_RC above).
 
 : **salias()**
@@ -901,7 +948,7 @@ Runs the function H-Glob() to expand or explain wildcards.
 : **j** (//jobs -l//)
 Prints status of jobs in the current shell session in long format.
 
-: **l** (//ls -lF --color=auto//)
+: **l** (//ls -l --color=auto//)
 Lists files in long output format with indicator for filetype appended
 to filename. If the terminal supports it, with colored output.
 
@@ -923,7 +970,7 @@ Lists files in long colored output format.
 : **llog** (//$PAGER /var/log/syslog//)
 Opens syslog in pager.
 
-: **ls** (//ls -CF --color=auto//)
+: **ls** (//ls -C --color=auto//)
 Lists directory, entries are listed by columns and an indicator for
 file type is appended to each file name. Additionally the output is
 colored, if the terminal supports it.
@@ -979,11 +1026,11 @@ Executes the commands on the versioned patch queue from current repository.
 : **rmcdir** (//'cd ..; rmdir $OLDPWD || cd $OLDPWD//)
 rmdir current working directory
 
-: **screen** (///usr/bin/screen -c ${HOME}/.screenrc//)
+: **screen** (//screen -c file//)
 If invoking user is root, starts screen session with /etc/grml/screenrc
-as config file. If invoked by a regular user, start a screen session
-with users .screenrc config if it exists, else use /etc/grml/screenrc_grml
-as configuration.
+as config file. If invoked by a regular user and users .screenc does not exist,
+starts screen with /etc/grml/screenrc_grml config if it exists, else fallbacks
+to /etc/grml/screenrc.
 
 : **su** (//sudo su//)
 If user is running a Grml live system, don't ask for any password, if she

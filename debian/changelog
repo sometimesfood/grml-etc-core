@@ -1,3 +1,154 @@
+grml-etc-core (0.12.4) grml-testing; urgency=medium
+
+  [ Frank Terbeck ]
+  * [e1f02ea] zshrc: Update Lookup functions from upstream
+  * [7e40be9] zshrc: Remove "allulimit" function
+  * [76fb54b] zshrc: Leave all limits alone
+  * [64794a6] grmlzshrc.5: Remove documentation for allulimit
+  * [fd3a55f] zshrc: Add more robustness to completion caching setup
+    [Closes: issue1933]
+  * [ea0e7e8] zshrc: Remove unused parameter $ZSHDIR
+
+  [ Bernhard Tittelbach ]
+  * [4e16818] tmux: background a window, reload config, improve binding
+
+  [ Dmitri Vereshchagin ]
+  * [d0c99ea] zshrc: fix screen alias
+  * [21c8c5c] grmlzshrc.t2t: update docs on screen alias
+
+ -- Michael Prokop <mika@grml.org>  Wed, 21 Oct 2015 23:22:38 +0200
+
+grml-etc-core (0.12.3) grml-testing; urgency=medium
+
+  [ Frank Terbeck ]
+  * [cdc48e8] zshrc, dirstack: Avoid chpwd() upon the very first cd calls
+  * [ead1a06] zshrc, dirstack: Remove useless test
+
+ -- Michael Prokop <mika@grml.org>  Tue, 11 Aug 2015 12:28:16 +0200
+
+grml-etc-core (0.12.2) grml-testing; urgency=medium
+
+  [ Michael Prokop ]
+  * [33bc6db] zshrc: Start/Restart/Stop/... functions: use `service`
+    wrapper if available
+  * [016955c] zshrc: drop 'setopt nonomatch' configuration
+
+  [ Frank Terbeck ]
+  * [ef0f249] Weed out non-existing directories when loading DIRSTACKFILE
+  * [cdbb53b] Marking an array for export serves no purpose
+  * [4ac3e89] Rewrite large parts of persistent dirstack handling
+  * [5297e36] Documentation for configuring persistent dirstack filters
+
+ -- Michael Prokop <mika@grml.org>  Wed, 08 Jul 2015 10:31:42 +0200
+
+grml-etc-core (0.12.1) grml-testing; urgency=medium
+
+  [ Thilo Six ]
+  * [9cbfcb4] zshrc: sll() now detects symlink loops +
+    additionaly display details about final link target
+
+  [ Michael Prokop ]
+  * [a5468f8] zshrc: no longer explicitly set SHELL
+  * [5a529cf] doc: replace unused $SHELL with zsh
+
+ -- Michael Prokop <mika@grml.org>  Tue, 16 Jun 2015 11:10:52 +0200
+
+grml-etc-core (0.12.0) grml-testing; urgency=medium
+
+  [ Thomas 'Moviuro' Berger ]
+  * [8945506] zshrc: we use getopts on salias()
+  * [cbe11aa] zshrc: bk(): better usage/help handling
+  * [9c33cea] minimal-shellrc: make sure that aliases refer to 'command ls'
+  * [386c0c4] zshrc: bk(): don't use while but for
+  * [8e8677d] zshrc: unify cat<< syntax
+  * [b9a7056] zshrc: `cat' is not needed in the `cat <<' syntax
+  * [dbd02d7] zshrc: add support for `fetch' in simple-extract()
+  * [46c2d10] zshrc: simplify cdt()
+  * [d6c9e08] README.md: curl(1) now follows redirects
+
+  [ Michael Vetter ]
+  * [2b66bf6] zshrc: Correct comment sentences
+
+  [ Michael Prokop ]
+  * [43d4533] zshrc: drop insecure options from curl/wget cmdlines in
+    simple-extract()
+
+  [ Thilo Six ]
+  * [fdb957e] zshrc: avoid cluttering environment [Closes: issue1350]
+
+  [ Christian Hesse ]
+  * [e3f3b08] zshrc: fix ssh remote host name completion with more
+    than one pattern
+
+  [ Dr. András Korn ]
+  * [6948820] zshenv: avoid placing empty components in PATH; reorder
+    root's PATH
+
+  [ Frank Terbeck ]
+  * [c4db6d7] zshrc: add static version of add-zsh-hook
+
+ -- Michael Prokop <mika@grml.org>  Sat, 06 Jun 2015 01:42:49 +0200
+
+grml-etc-core (0.11.2) grml-testing; urgency=medium
+
+  [ Frank Terbeck ]
+  * [77ce18f] zshrc: Fix broken variable assignment [Closes: issue1347]
+
+  [ Csillag Tamas ]
+  * [eb5f508] zshrc: add issolaris()
+
+  [ Moviuro ]
+  * [d338dea] zshrc: new bk() option '-ra' to removal all (even hidden)
+    backups
+  * [bd49c00] zshrc: don't overwrite {ls,grep}_options set in .zshrc.pre
+  * [2065da5] zshrc: simplify ls alias setup; remove -F from ls aliases
+
+  [ Michael Prokop ]
+  * [28618c1] zshrc: drop '-F' from ls alias 'l' also when running in dump
+    $TERM
+  * [4780a0e] zshrc/grmlzshrc.t2t: update docs related to '-F' removal
+    from ls aliases
+  * [aeb06b2] minimal-shellrc: sync ls related alias behaviour with main
+    zshrc
+
+ -- Michael Prokop <mika@grml.org>  Mon, 13 Apr 2015 09:27:37 +0200
+
+grml-etc-core (0.11.1) grml-testing; urgency=medium
+
+  [ Frank Terbeck ]
+  * [1049e38] Remove ‘tail’ from list of _gnu_generic commands
+
+  [ Bernhard Tittelbach ]
+  * [71346d6] zshrc: purge: clean core.pid files
+
+ -- Michael Prokop <mika@grml.org>  Mon, 23 Mar 2015 09:00:39 +0100
+
+grml-etc-core (0.11.0) grml-testing; urgency=medium
+
+  [ Moviuro ]
+  * [d53b088] zshrc: began rewriting bk()
+  * [39b7de0] zshrc: bk() gets support for multiple files/folders
+  * [0ac05d2] zshrc: bk() gets FreeBSD support
+  * [43be944] zshrc: updating bk()
+  * [9a532dd] zshrc: removed duplicate line
+  * [4c996b3] zshrc: Fixed OpenBSD battery function
+  * [cd79c20] zshrc: bk() update
+  * [8075930] zshrc: bk() now works on directories with trailing /
+  * [a66d7b8] zshrc: bk gets a remove option that cleans backups
+  * [1df56b4] zshrc: using `<' instead of `cat'
+  * [c9a74e7] zshrc: removed extra `;'
+  * [6313103] zshrc: Fix indentation
+  * [426e2a3] zshrc: remove weird whitespace
+  * [c0280d1] grmlzshrc.t2t: update bk() information
+
+  [ Michael Prokop ]
+  * [e020ae7] zshrc: drop j alias (used for 'jobs -l') [Closes: issue1338]
+
+  [ Christian Sturm ]
+  * [8b1e798] zshrc: read host for ssh command completion from config
+
+ -- Michael Prokop <mika@grml.org>  Mon, 09 Feb 2015 06:29:07 +0100
+
 grml-etc-core (0.10.3) grml-testing; urgency=medium
 
   [ Moviuro ]
