@@ -1,3 +1,113 @@
+grml-etc-core (0.14.1) grml-testing; urgency=medium
+
+  [ Frank Terbeck ]
+  * [5352f45] prompt_grml: Add documentation for strip-sensitive-
+    characters
+
+  [ Michael Prokop ]
+  * [b9bdbb1] zshrc: avoid "no matches found: abk[V]" on grml-small
+    systems
+  * [a81b118] zshrc: avoid "no matches found: abk[V]" on grml-small
+    systems, fixup. Thanks to Frank Terbeck <ft@grml.org>
+
+ -- Michael Prokop <mika@grml.org>  Fri, 05 May 2017 10:52:44 +0200
+
+grml-etc-core (0.14.0) grml-testing; urgency=medium
+
+  [ Thilo Six ]
+  * [cedfc98] make location of file .important_commands configurable
+    keeping backward compatibility
+  * [fbdbd82] fix usage of 'typeset -U'
+  * [57c97bc] use function keyword through out the code
+  * [bec2df1] add missing run-help-*
+  * [b71bff0] also unset NO_COLOR
+  * [6b946fe] small fix for sll()
+  * [76bfaf8] reduce unneeded filesystem seeks
+  * [1e990f9] only try to autoload, when there actually is s.th. to
+
+  [ Frank Terbeck ]
+  * [c5383b1] Test the correct parameter for non-emptiness
+  * [38a1b61] Handle volatile characters in prompts with promptsubst set
+
+  [ Michael Prokop ]
+  * [ecfca56] zshrc: use apt for agi/adg/ag/au aliases, fall back to apt-
+    get. Thanks to Karl Voit for the suggestion
+  * [2210c9b] zshrc: fix space<->tab indention issue for commit
+    ecfca564173
+
+ -- Michael Prokop <mika@grml.org>  Sat, 25 Mar 2017 17:52:14 +0100
+
+grml-etc-core (0.13.2) grml-testing; urgency=medium
+
+  * [b2556e7] zshrc: fall back to journalctl with llog + tlog aliases
+    if /var/log/syslog doesn't exist
+  * [875b6d6] zshrc: support systems without capacity file in
+    batterylinux() [Closes: issue1333] Thanks to Axel Beckert
+    for the patch
+
+ -- Michael Prokop <mika@grml.org>  Fri, 27 Jan 2017 16:17:15 +0100
+
+grml-etc-core (0.13.1) grml-testing; urgency=medium
+
+  * [274a68f] lsb-functions: avoid usage of SYSTEMD variable
+
+ -- Michael Prokop <mika@grml.org>  Fri, 13 Jan 2017 16:06:06 +0100
+
+grml-etc-core (0.13.0) grml-testing; urgency=medium
+
+  [ Daniel Hahler ]
+  * [9dbdd75] zshrc: dirstack: skip for ZSH_SUBSHELL
+
+  [ Frank Terbeck ]
+  * [a1d579b] zshrc: clean up fallback prompt code
+  * [dbcbf31] doc/grmlzshrc: fix typo in grmlzshrc manual
+
+  [ Bernhard Tittelbach ]
+  * [1278480] zshrc: purge: c dependency files
+  * [0219e4b] zshrc: purge: latexfiles
+
+  [ Nicolas Braud-Santoni ]
+  * [6646b26] zshrc: do not alias 'mdstat' when /proc/mdstat doesn't exist
+  * [a8df509] zshrc: Make ambiguous aliases optional
+  * [1ce2c6d] doc/grmlzshrc: Document GRML_NO_{APT,SMALL}_ALIASES
+
+  [ Michael Prokop ]
+  * [aaa1e7f] Support systemd-style output via lsb-functions
+  * [2ee956e] lsb-functions: include support for grml_colors handling
+  * [07492e0] Bump Standards-Version to 3.9.8
+  * [3ca2a63] Bump debian/compat version to 9
+
+ -- Michael Prokop <mika@grml.org>  Fri, 13 Jan 2017 14:03:57 +0100
+
+grml-etc-core (0.12.6) grml-testing; urgency=medium
+
+  [ Frank Terbeck ]
+  * [df5ece4] zshrc: Make the default of 'filter-on-load' match docs
+  * [d005e0b] zshrc: Add a setting to avoid the persistent dirstack
+    feature to be activated
+  * [95d0e2f] grmlzshrc.5: Clarify where to set the enable style
+
+  [ Thilo Six ]
+  * [ebd9d16] zshrc: check_com() fixed and zshified
+
+  [ Michael Prokop ]
+  * [80e5721] Bump Standards-Version to 3.9.7
+
+ -- Michael Prokop <mika@grml.org>  Sat, 30 Apr 2016 23:39:33 +0200
+
+grml-etc-core (0.12.5) grml-testing; urgency=medium
+
+  [ Sebastian Boehm ]
+  * [50c5b14] tmux: remove obsolete mouse-select-pane option
+
+  [ Michael Prokop ]
+  * [08c9c9c] Switch screenrc_* to UTF8 encoding
+
+  [ Frank Terbeck ]
+  * [c1d264c] Sync to zsh-lookup upstream repository
+
+ -- Michael Prokop <mika@grml.org>  Tue, 05 Jan 2016 22:44:31 +0100
+
 grml-etc-core (0.12.4) grml-testing; urgency=medium
 
   [ Frank Terbeck ]
