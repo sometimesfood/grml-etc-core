@@ -1,3 +1,123 @@
+grml-etc-core (0.17.2) grml-testing; urgency=medium
+
+  [ Moviuro ]
+  * [4124996] zshenv, zshrc: add fallback to uname for HOSTNAME
+
+  [ Michael Prokop ]
+  * [94d6068] vimrc: support vim-tiny and older versions of vim
+  * [99ad5c1] zshrc: rely only on `uname -n` for $HOSTNAME handling.
+    Thanks to Darshaka Pathirana and Chris Hofstaedtler
+
+  [ ur4t ]
+  * [606e4c8] zshrc: add zstd support for simple-extract()
+
+ -- Michael Prokop <mika@grml.org>  Wed, 03 Jun 2020 16:50:12 +0200
+
+grml-etc-core (0.17.1) grml-testing; urgency=medium
+
+  [ Garrett Holmstrom ]
+  * [640f2a0] zshrc: Fix darwin battery info field selection
+
+  [ Michael Prokop ]
+  * [7642276] zshsrc + zshenv: support hostnamectl iff hostname isn't
+    present
+
+  [ Darshaka Pathirana ]
+  * [da9a55e] tmux.conf: Fix /etc/tmux.conf:19: unknown key: \\ error
+    message
+
+ -- Michael Prokop <mika@grml.org>  Wed, 27 May 2020 11:21:20 +0200
+
+grml-etc-core (0.17.0) grml-testing; urgency=medium
+
+  [ Darshaka Pathirana ]
+  * [31dc671] vimrc: Major rework of the Grml configuration. Thanks to
+    Michael Prokop (@mika) for the initial work
+  * [c2cbdb0] tmux.conf: Fix unknown key: confirm-before error message
+
+ -- Michael Prokop <mika@grml.org>  Wed, 20 May 2020 17:24:49 +0200
+
+grml-etc-core (0.16.2) grml-testing; urgency=medium
+
+  [ Doan Tran Cong Danh ]
+  * [2c241ec] zsh: commit-to-history: keep escaped character
+
+  [ Michael Prokop ]
+  * [675c85b] zshrc: support PAGER='less -Mr' usage and fall back to vi if
+    LESSOPEN is unset. Thanks to András Korn for review and improvement
+    suggestions
+  * [7ece114] doc: adjust txt2tags usage for versions >=3.3
+  * [b4ea931] Bump Standards-Version to 4.5.0
+  * [5b98679] Bump Debian compat version to 12, using debhelper-compat
+    approach
+  * [9cb82a3] Execute 'wrap-and-sort -a -t -s' on debian/
+
+ -- Michael Prokop <mika@grml.org>  Tue, 12 May 2020 17:09:53 +0200
+
+grml-etc-core (0.16.1) grml-testing; urgency=medium
+
+  [ Doan Tran Cong Danh ]
+  * [542aca0] tmux: use foo-style to set status styles
+
+  [ Dmitri Vereshchagin ]
+  * [03ec73c] zshrc: Reset $REPLY parameter before calling prompt token
+    functions
+
+  [ Alexander Dahl ]
+  * [a03c1ff] screenrc: Add 'xterm-256color' to terminals
+
+  [ cantandwont ]
+  * [0c9e97b] zshrc: fix urxvt multi-line issue (Closes GH #74)
+
+ -- Michael Prokop <mika@grml.org>  Tue, 22 Oct 2019 16:00:56 +0200
+
+grml-etc-core (0.16.0) grml-testing; urgency=medium
+
+  [ Sebastian Boehm ]
+  * [1d73467] Disable bracketed paste mode for dumb terminals
+
+  [ Michael Prokop ]
+  * [7df9a4a] zshenv: switch default mount point from
+    /lib/live/mount/medium to /run/live/medium
+  * [60494a4] Bump Standards-Version to 4.3.0
+
+ -- Michael Prokop <mika@grml.org>  Thu, 21 Mar 2019 12:23:24 +0100
+
+grml-etc-core (0.15.3) grml-testing; urgency=medium
+
+  [ Frank Terbeck ]
+  * [5e0079d] zsh: In grml-small hint at drill instead of dig
+
+  [ Michael Prokop ]
+  * [d5d683c] doc/grmlzshrc.t2t: replace `apt-get` with `apt`
+
+ -- Michael Prokop <mika@grml.org>  Sat, 29 Dec 2018 15:43:07 +0100
+
+grml-etc-core (0.15.2) grml-testing; urgency=medium
+
+  * [31037e9] grml-lang zsh completion: add dvorak, es, fr, it + jp to
+    list of supported languages. Thanks to Christian Haase for the bug
+    report
+
+ -- Michael Prokop <mika@grml.org>  Fri, 14 Dec 2018 12:18:27 +0100
+
+grml-etc-core (0.15.1) grml-testing; urgency=medium
+
+  [ Bernhard Tittelbach ]
+  * [8998637] zshrc: fix default keybinding help
+
+  [ Darshaka Pathirana ]
+  * [a5f5b62] bk(): Remove the separators between the units of time
+
+  [ Frank Terbeck ]
+  * [5f07a91] Add a style in order to amend compinit's command line
+
+  [ Michael Prokop ]
+  * [371dddd] Bump Standards-Version to 4.2.1
+  * [10ecab7] Switch Homepage + Vcs-Browser headers from http to https
+
+ -- Michael Prokop <mika@grml.org>  Thu, 15 Nov 2018 09:57:51 +0100
+
 grml-etc-core (0.15.0) grml-testing; urgency=medium
 
   [ Moviuro ]

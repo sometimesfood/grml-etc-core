@@ -131,6 +131,38 @@ obtained with the zprof builtin command (see zshmodules(1) for details).
 Specifies the location of the completion dump file. Default: $HOME/.zcompdump.
 
 
+= GRML-ZSHRC SPECIFIC STYLES =
+
+Styles are a context sensitive configuration mechanism included with zsh. The
+shell uses it extensively in sub-systems like the completion and the VCS info
+system. It lives outside of the classic shell variable namespace, so it avoids
+polluting it. New functionality in grml's zshrc will likely use styles instead
+of variables. Some features of the setup (like the directory stack handling)
+already use styles. Those styles are documented with the specific features.
+This section documents more general styles.
+
+== Context: :grml:completion:compinit ==
+This context revolves around the zshrc's //compinit// function call, that
+initialises zsh's function based completion system.
+
+: **arguments**
+This style allows the injection of arguments to the command line that is used
+to run compinit. It is a list style and its default is the empty list. Using
+this style, it's possible to add **-i** to //compinit// in order to disable
+//compaudit//.
+\
+```
+zstyle ':grml:completion:compinit' arguments -i
+```
+\
+Only do this, if you know what sort of security checks are disabled if
+//compaudit// is not active and if that's acceptable with your specific setup.
+\
+This style has to be set at the point that Grml's zshrc runs //compinit//. A
+possible way to achieve this is to set it in //~/.zshrc.pre// (see AUXILIARY
+FILES below for details).
+
+
 = FEATURE DESCRIPTION =
 This is an in depth description of non-standard features implemented by
 //grmlzshrc//.
@@ -878,21 +910,21 @@ With no arguments prints out the priorities of each source. If a package name
 is given, it displays detailed information about the priority selection of the
 package.
 
-: **acs** (//apt-cache search//)
+: **acs** (//apt search//)
 Searches debian package lists for the regular expression provided as argument.
 The search includes package names and descriptions. Prints out name and short
 description of matching packages.
 
-: **acsh** (//apt-cache show//)
+: **acsh** (//apt show//)
 Shows the package records for the packages provided as arguments.
 
-: **adg** (//apt-get dist-upgrade//)
+: **adg** (//apt dist-upgrade//)
 Performs an upgrade of all installed packages. Also tries to automatically
 handle changing dependencies with new versions of packages. As this may change
 the install status of (or even remove) installed packages, it is potentially
 dangerous to use dist-upgrade; invoked by sudo, if necessary.
 
-: **ag** (//apt-get upgrade//)
+: **ag** (//apt upgrade//)
 Downloads and installs the newest versions of all packages currently installed
 on the system. Under no circumstances are currently installed packages removed,
 or packages not already installed retrieved and installed. New versions of
@@ -900,11 +932,11 @@ currently installed packages that cannot be upgraded without changing the instal
 status of another package will be left at their current version. An update must
 be performed first (see au below); run by sudo, if necessary.
 
-: **agi** (//apt-get install//)
+: **agi** (//apt install//)
 Downloads and installs or upgrades the packages given on the command line.
 If a hyphen is appended to the package name, the identified package will be
 removed if it is installed. Similarly a plus sign can be used to designate a
-package to install. This may be useful to override decisions made by apt-get's
+package to install. This may be useful to override decisions made by apt's
 conflict resolution system.
 A specific version of a package can be selected for installation by following
 the package name with an equals and the version of the package to select. This
@@ -915,9 +947,9 @@ Gets invoked by sudo, if user id is not 0.
 
 : **ati** (//aptitude install//)
 Aptitude is a terminal-based package manager with a command line mode similar to
-apt-get (see agi above); invoked by sudo, if necessary.
+apt (see agi above); invoked by sudo, if necessary.
 
-: **au** (//apt-get update//)
+: **au** (//apt update//)
 Resynchronizes the package index files from their sources. The indexes of
 available packages are fetched from the location(s) specified in
 /etc/apt/sources.list. An update should always be performed before an
