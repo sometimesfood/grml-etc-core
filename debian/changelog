@@ -1,3 +1,116 @@
+grml-etc-core (0.19.5) grml-testing; urgency=medium
+
+  [ Darshaka Pathirana ]
+  * [a4aa146] tmux.conf: detect running as tmate and disable non-supported
+    features
+
+ -- Michael Prokop <mika@grml.org>  Fri, 25 Nov 2022 17:11:57 +0100
+
+grml-etc-core (0.19.4) grml-testing; urgency=medium
+
+  [ Hanabishi ]
+  * [e27d360] Fix a typo in `zshrc`
+
+  [ Michael Prokop ]
+  * [220d6ff] zshrc: refactor and convert host completion one-liner into
+    multi-line
+  * [f3f1387] zshrc: fix grmlcomp conditionals, fixup for 220d6ffa
+  * [0895266] iwconfig zsh completion: replace egrep usage with grep -E
+  * [5065224] zshrc: run tlog alias with --follow=name
+
+ -- Michael Prokop <mika@grml.org>  Mon, 10 Oct 2022 19:00:20 +0200
+
+grml-etc-core (0.19.3) grml-testing; urgency=medium
+
+  [ Darshaka Pathirana ]
+  * [2060f8d] tmux.conf: source user-specific local conf file
+    ~/.tmux.conf.local
+  * [591479d] tmux.conf: Add bind-key J to join marked pane to active
+    window
+
+ -- Michael Prokop <mika@grml.org>  Wed, 17 Aug 2022 13:22:38 +0200
+
+grml-etc-core (0.19.2) grml-testing; urgency=medium
+
+  [ Frank Terbeck ]
+  * [4a3593b] doc: Error out properly when a generator fails
+
+ -- Michael Prokop <mika@grml.org>  Mon, 21 Mar 2022 16:22:05 +0100
+
+grml-etc-core (0.19.1) grml-testing; urgency=medium
+
+  [ Bhoppi Chaw ]
+  * [95639b9] zshrc: remove dependency of hostname[ctl]
+
+  [ Michael Prokop ]
+  * [42cdb33] zshrc: support setting title in foot terminal emulator.
+    Thanks to Alexander Kobel for the patch
+  * [69255e6] zshrc: do not unconditionally overwrite $COLORTERM (Closes:
+    #131)
+
+  [ Christian Hesse ]
+  * [ae49957] zshrc: use ip from iproute2 with color support
+  * [2b1cff4] zshrc: make ip touch interface lo only
+
+  [ Roman Volosatovs ]
+  * [f444c52] zshrc: add `NOETCHOSTS` parameter
+
+  [ Atrate ]
+  * [27e32fa] zshrc: ignore hosts set to invalid/loopback addresses for
+    $_etc_hosts
+
+  [ Pásztor János ]
+  * [e54fa78] zshrc: fix ip command coloring
+
+ -- Michael Prokop <mika@grml.org>  Mon, 24 Jan 2022 16:59:15 +0100
+
+grml-etc-core (0.19.0) grml-testing; urgency=medium
+
+  [ a-wing ]
+  * [e7927a8] zshrc: change sudo-command-line switch 'sudo'
+  * [6a2a0dc] zshrc: improve sudo-command-line
+
+  [ Michael Prokop ]
+  * [b6246bb] zshrc: no longer set histignorealldups
+
+ -- Michael Prokop <mika@grml.org>  Fri, 09 Jul 2021 09:13:02 +0200
+
+grml-etc-core (0.18.0) grml-testing; urgency=medium
+
+  [ Michael Prokop ]
+  * [30fc297] zshrc: url-quote-magic depends on bracketed-paste-magic
+    since zsh 5.1
+  * [1cf6c0a] README.md: use https everywhere + adjust ordering
+
+  [ Frank Terbeck ]
+  * [e01bb8f] Don't print messages when a feature can't be loaded
+
+  [ Darshaka Pathirana ]
+  * [79dd104] README.md: Add tmux.conf to the "most important files" list
+
+  [ lunik1 ]
+  * [86f2a9b] zshrc: add lrzip support for simple-extract()
+
+ -- Michael Prokop <mika@grml.org>  Fri, 22 Jan 2021 13:29:22 +0100
+
+grml-etc-core (0.17.4) grml-testing; urgency=medium
+
+  [ Michael Prokop ]
+  * [401702a] zshrc: enable transient_rprompt to fix sad-smiley situation
+    in rprompt. Thanks to Frank Terbeck
+
+  [ Simon Bruder ]
+  * [e1db4fe] zshrc: set title in alacritty
+
+ -- Michael Prokop <mika@grml.org>  Fri, 10 Jul 2020 10:53:48 +0200
+
+grml-etc-core (0.17.3) grml-testing; urgency=medium
+
+  [ Darshaka Pathirana ]
+  * [d336df8] zshrc: add function grml-remote-support
+
+ -- Michael Prokop <mika@grml.org>  Wed, 24 Jun 2020 12:33:37 +0200
+
 grml-etc-core (0.17.2) grml-testing; urgency=medium
 
   [ Moviuro ]

@@ -100,6 +100,10 @@ A value of zero turns off checking.
 : **NOCOR**
 Non zero values deactivate automatic correction of commands.
 
+: **NOETCHOSTS**
+Non zero values deactivate parsing of "/etc/hosts" disabling host completion
+using file's contents.
+
 : **NOMENU**
 If set to zero (default), allows selection from a menu, if there are at least
 five possible options of completion.
@@ -547,11 +551,6 @@ duration (in seconds) to the history file.
 Whenever a command completion is attempted, make sure the entire command
 path is hashed first. This makes the first completion slower.
 
-: **histignorealldups** <grml>
-If a new command line being added to the history list duplicates an
-older one, the older command is removed from the list, even if it is
-not the previous event.
-
 : **histignorespace** <grml>
 Remove command lines from the history list when the first character on
 the line is a space, or when one of the expanded aliases contains a
@@ -718,6 +717,16 @@ Edit given shell function.
 
 : **freload()**
 Reloads an autoloadable shell function (See autoload in zshbuiltins(1)).
+
+: **grml_status_features()**
+Prints a summary of features the grml setup is trying to load. The result of
+loading a feature is recorded. This function lets you query the result. The
+function takes one argument: "-h" or "--help" to display this help text, "+" to
+display a list of all successfully loaded features, "-" for a list of all
+features that failed to load. "+-" to show a list of all features with their
+statuses. Any other word is considered to by a feature and prints its status.
+
+The default mode is "+-".
 
 : **grml_vcs_info_toggle_colour()**
 Toggles between coloured and uncoloured formats in vcs_info configuration.
@@ -1097,7 +1106,7 @@ http://www.cl.cam.ac.uk/~mgk25/unicode.html#term).
 Sets mode from ISO 2022 to UTF-8 (See:
 http://www.cl.cam.ac.uk/~mgk25/unicode.html#term).
 
-: **tlog** (//tail -f /var/log/syslog//)
+: **tlog** (//tail --follow=name /var/log/syslog//)
 Prints syslog continuously (See tail(1)).
 
 : **up** (//aptitude update ; aptitude safe-upgrade//)
