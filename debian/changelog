@@ -1,3 +1,159 @@
+grml-etc-core (0.19.19) grml-testing; urgency=medium
+
+  [ Chris Hofstaedtler ]
+  * [ce34a47] zshrc: drop sv support from init.d functions
+
+ -- Michael Prokop <mika@grml.org>  Wed, 14 May 2025 13:20:23 +0200
+
+grml-etc-core (0.19.18) grml-testing; urgency=medium
+
+  [ Christopher Bock ]
+  * [ae718bb] zshrc: cleanup:
+    * H-Glob(): fix output of escaped $1
+    * alias grml-version: only create if /etc/grml_version is present
+    * function trans(): only create if translate-shell:/usr/bin/trans is not
+      installed
+    * alias dbp: only create if dpkg-dev:/usr/bin/dpkg-buildpackage is
+      installed.
+    * Start(): check for existence of /etc/service.
+
+ -- Chris Hofstaedtler <ch@grml.org>  Sun, 13 Apr 2025 19:39:31 +0200
+
+grml-etc-core (0.19.17) grml-testing; urgency=medium
+
+  [ Darshaka Pathirana ]
+  * [b0438a6] zshrc: Add alias llblk for lsblk with useful columns
+
+ -- Chris Hofstaedtler <ch@grml.org>  Thu, 03 Apr 2025 00:05:41 +0200
+
+grml-etc-core (0.19.16) grml-testing; urgency=medium
+
+  * [5188b8f] zsh: drop _hg completion
+
+ -- Chris Hofstaedtler <ch@grml.org>  Mon, 24 Mar 2025 11:13:36 +0100
+
+grml-etc-core (0.19.15) grml-testing; urgency=medium
+
+  [ Chris Hofstaedtler ]
+  * [9c94b6d] doc/Makefile: drop unused target for copying to grml.org
+  * [c90ace6] Switch manpage source to asciidoc
+  * [6087977] README: add link to grmlzshrc manpage
+  * [a6e6c1b] README: resync install instructions with grml.org/console
+  * [186fa1d] d/control: Set Rules-Requires-Root: no
+  * [e8cf5d9] CI: add ci .deb build step
+  * [68d0f5d] CI: build grml-zsh-refcard
+
+  [ Christopher Bock ]
+  * [bdd546a] zshrc: alias afl for apt-file list
+  * [6213267] etc/skel/.zshrc: global alias TZ for timestamp/ts(1)
+  * [392c92a] etc/zsh/zshrc: only alias if command is present
+
+  [ Darshaka Pathirana ]
+  * [76c99aa] tmux: status-right: Show IP addresses (similar to our GNU/screen
+    configuration)
+  * [1082849] tmux: status-right: Show IP addresses (similar to our GNU/screen
+    configuration)
+
+ -- Chris Hofstaedtler <ch@grml.org>  Tue, 04 Mar 2025 23:26:36 +0100
+
+grml-etc-core (0.19.14) grml-testing; urgency=medium
+
+  [ Christopher Bock ]
+  * [e887095] zshrc: remove not existing alias http
+
+  [ Chris Hofstaedtler ]
+  * [dfd67c2] zshrc: remove "hbp" alias
+  * [b262ddc] zshrc: deprecate xunfunction
+
+ -- Chris Hofstaedtler <ch@grml.org>  Tue, 28 Jan 2025 00:37:55 +0100
+
+grml-etc-core (0.19.13) grml-testing; urgency=medium
+
+  [ Christopher Bock ]
+  * [f406388] zsh aliases: add afs(apt-file search)
+
+  [ Chris Hofstaedtler ]
+  * [f394bcd] zshenv: drop live-cd only hacks
+  * [05ea006] zsh: drop solaris support
+
+ -- Chris Hofstaedtler <ch@grml.org>  Tue, 21 Jan 2025 00:47:42 +0100
+
+grml-etc-core (0.19.12) grml-testing; urgency=medium
+
+  [ Chris Hofstaedtler ]
+  * [6d821ff] Drop DISTCC_HOSTS variable
+  * [fb88e68] zshrc: remove add-zsh-hook from grml_prompt_setup
+  * [66aeaa8] zshrc: require zsh version 4.0
+  * [d0b7969] zshrc: require zsh version 4.1
+  * [7f94fd2] zshrc: require zsh version 4.2
+  * [6d47828] zshrc: require zsh version 5.0
+  * [4be747b] zshrc: require zsh version 5.1
+  * [8cef718] zshrc: remove cdrecord function
+  * [3773037] zshrc: remove 855resolution function
+  * [34d456e] zshrc: remove fink init on macOS
+  * [add76e5] zshrc: drop centericq workaround
+  * [f7a30f7] zshrc: drop mrxvt workaround
+  * [9d56198] zshrc: drop aterm workaround
+  * [49531c1] zshrc: remove zurl function
+  * [0e4083d] zshrc: remove fink init on macOS
+  * [4d8fae2] zshrc: use path_helper on macOS
+  * [38d1737] zshrc: stop setting CLICOLOR
+  * [804e183] zshrc: remove grml_maintain_name.
+    Thanks to Frank Terbeck
+  * [0eab465] zshenv: stop setting HOSTNAME
+  * [3ea59e8] zshrc: use $HOST instead of forking to uname -n
+
+  [ Frank Terbeck ]
+  * [35297c5] zshrc: remove copy of add-zsh-hook
+  * [f2a418e] doc: remove old version info
+
+ -- Chris Hofstaedtler <ch@grml.org>  Mon, 23 Dec 2024 15:58:19 +0100
+
+grml-etc-core (0.19.11) grml-testing; urgency=medium
+
+  * [0ecf486] zshrc: set HISTSIZE + SAVEHIST only if not yet set or being
+    set to zsh upstream default
+
+ -- Michael Prokop <mika@grml.org>  Wed, 18 Dec 2024 21:50:27 +0100
+
+grml-etc-core (0.19.10) grml-testing; urgency=medium
+
+  * [9e786ae] Revert "zshrc: increase HISTSIZE + SAVEHIST to our defaults
+    also for live system"
+  * [9fbdc02] Revert "fix(zshrc): keep existing history restrictions"
+
+ -- Michael Prokop <mika@grml.org>  Tue, 17 Dec 2024 08:34:06 +0100
+
+grml-etc-core (0.19.9) grml-testing; urgency=medium
+
+  [ unknowndevQwQ ]
+  * [7465ffb] fix(zshrc): keep existing history restrictions
+
+  [ Michael Prokop ]
+  * [81096c8] zshrc: increase HISTSIZE + SAVEHIST to our defaults also for
+    live system
+
+  [ Chris Hofstaedtler ]
+  * [0592fb8] MAKEDEV is gone from Debian
+  * [b7b9ce0] zshenv: add ~/.local/bin to default PATH
+  * [b511093] debian: use modern build system
+
+ -- Chris Hofstaedtler <ch@grml.org>  Sat, 14 Dec 2024 12:42:55 +0100
+
+grml-etc-core (0.19.8) grml-testing; urgency=medium
+
+  [ Michael Prokop ]
+  * [43592e3] Stop shipping /etc/zsh/zlogout to avoid clearing terminal
+    screen
+  * [57ee36a] debian/preinst: drop deprecated dpkg-divert
+  * [707f6c6] Ship debian/gbp.conf for gbp usage
+
+  [ Chris Hofstaedtler ]
+  * [3808820] debian: update Vcs-Git and Vcs-Browser
+  * [1e0b93d] Add .github/FUNDING.yml
+
+ -- Michael Prokop <mika@grml.org>  Fri, 22 Nov 2024 12:40:32 +0100
+
 grml-etc-core (0.19.7) grml-testing; urgency=medium
 
   [ Michael Prokop ]

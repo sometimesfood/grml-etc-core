@@ -3,12 +3,13 @@ Section: grml
 Priority: optional
 Maintainer: Michael Prokop <mika@grml.org>
 Build-Depends:
+ asciidoctor,
  debhelper-compat (= 12),
- txt2tags,
 Standards-Version: 4.6.2
-Homepage: https://git.grml.org/?p=grml-etc-core.git
-Vcs-git: git://git.grml.org/grml-etc-core.git
-Vcs-Browser: https://git.grml.org/?p=grml-etc-core.git
+Rules-Requires-Root: no
+Homepage: https://github.com/grml/grml-etc-core
+Vcs-Git: https://github.com/grml/grml-etc-core.git
+Vcs-Browser: https://github.com/grml/grml-etc-core
 Origin: Grml
 Bugs: mailto:bugs@grml.org
 
@@ -21,10 +22,12 @@ Conflicts:
 Replaces:
  vim-common,
 Depends:
+ ${misc:Depends},
  vim | nvi | editor,
 Recommends:
  grml-scripts-core,
 Pre-Depends:
+ ${misc:Pre-Depends},
  zsh,
 Description: core etcetera files for the Grml system
  This package includes some /etc files for the
