@@ -654,7 +654,8 @@ and file attributes like mode, ownership and timestamps are preserved.
 
 *cdt()*::
 Creates a temporary directory using mktemp. Then changes current
-working directory to it.
+working directory to it. You can optionally provide a prefix which will result
+in e.g. /tmp/PREFIX.XXXXXXX.
 
 *changed()*::
 Lists files in current directory, which have been changed within the
@@ -665,10 +666,6 @@ If no argument is specified N is set to 1.
 Returns true if given command exists either as program, function, alias,
 builtin or reserved word. If the option -c is given, only returns true,
 if command is a program.
-
-*checkhome()*::
-Changes directory to $HOME on first invocation of zsh. This is necessary on
-Grml systems with autologin.
 
 *cl()*::
 Changes current directory to the one supplied by argument and lists the files
@@ -747,10 +744,6 @@ Returns true, if run on grml-small, else false.
 *islinux()*::
 Returns true, if running on Linux, else false.
 
-*iso2utf()*::
-Changes every occurrence of the string iso885915 or ISO885915 in
-environment variables to UTF-8.
-
 *isopenbsd()*::
 Returns true, if running on OpenBSD, else false.
 
@@ -783,7 +776,7 @@ ZSH_PROFILE_RC above).
 
 *salias()*::
 Creates an alias with sudo prepended, if $EUID is not zero. Run "salias -h"
-for details. See also xunfunction() below.
+for details.
 
 *simple-extract()*::
 Tries to uncompress/unpack given files with the appropriate programs. If an URI
@@ -826,10 +819,6 @@ Translates a word from german to english (-D) or vice versa (-E).
 *uchange()*::
 Shows upstreams changelog of a given package in $PAGER.
 
-*utf2iso()*::
-Changes every occurrence of the string UTF-8 or utf-8 in environment
-variables to iso885915.
-
 *vim()*::
 Wrapper for vim(1). It tries to set the title and hands vim the environment
 variable VIM_OPTIONS on the command line. So the user may define command
@@ -842,25 +831,18 @@ optional and denote a search range (default: -100).
 
 *xcat()*::
 Tries to cat(1) file(s) given as parameter(s). Always returns true.
-See also xunfunction() below.
 
 *xsource()*::
 Tries to source the file(s) given as parameter(s). Always returns true.
 See zshbuiltins(1) for a detailed description of the source command.
-See also xunfunction() below.
 
 *xtrename()*::
 Changes the title of xterm window from within screen(1). Run without
 arguments for details.
 
-*xunfunction()*::
-Removes the functions salias, xcat, xsource, xunfunction and zrcautoload.
-*Deprecated.*
-
 *zrcautoload()*::
 Wrapper around the autoload builtin. Loads the definitions of functions
-from the file given as argument. Searches $fpath for the file. See also
-xunfunction() above.
+from the file given as argument. Searches $fpath for the file.
 
 *zrclocal()*::
 Sources /etc/zsh/zshrc.local and ${HOME}/.zshrc.local. These are the files
@@ -966,9 +948,6 @@ ssh with possible man-in-the-middle attack enabled
 *help-zshglob* (_H-Glob()_)::
 Runs the function H-Glob() to expand or explain wildcards.
 
-*j* (_jobs -l_)::
-Prints status of jobs in the current shell session in long format.
-
 *l* (_ls -l --color=auto_)::
 Lists files in long output format with indicator for filetype appended
 to filename. If the terminal supports it, with colored output.
@@ -1056,14 +1035,6 @@ to /etc/grml/screenrc.
 *su* (_sudo su_)::
 If user is running a Grml live system, don't ask for any password, if she
 wants a root shell.
-
-*term2iso* (_echo 'Setting terminal to iso mode' ; print -n '\e%@'_)::
-Sets mode from UTF-8 to ISO 2022 (See:
-http://www.cl.cam.ac.uk/~mgk25/unicode.html#term[What are the issues related to UTF-8 terminal emulators?]).
-
-*term2utf* (_echo 'Setting terminal to utf-8 mode'; print -n '\e%G'_)::
-Sets mode from ISO 2022 to UTF-8 (See:
-http://www.cl.cam.ac.uk/~mgk25/unicode.html#term[What are the issues related to UTF-8 terminal emulators?]).
 
 *tlog* (_tail --follow=name /var/log/syslog_)::
 Prints syslog continuously (See tail(1)).
@@ -1287,4 +1258,3 @@ This manpage is distributed under the terms of the GPL version 2.
 Most parts of grml's zshrc are distributed under the terms of GPL v2, too,
 except for *accept-line()* which are distributed under the same conditions
 as zsh itself (which is BSD-like).
-
